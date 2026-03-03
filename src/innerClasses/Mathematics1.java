@@ -1,0 +1,22 @@
+package innerClasses;
+
+public class Mathematics1 {
+
+	static class Factorial{
+		int berechne(int n) {
+			int erg = 1;
+			for(int i=1; i<=n;i++) {
+				erg *= i;
+			
+			}return erg;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Factorial f = new Factorial();
+		System.out.println(f.berechne(3));
+	}
+
+}
