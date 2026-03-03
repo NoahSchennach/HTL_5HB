@@ -1,21 +1,8 @@
 package refactoring.refactorme;
 
-class IdException extends Exception {
 
-	private static final long serialVersionUID = 1L;
 
-	public IdException(String message) {
-		super(message);
-	}
-}
 
-class InvalidAccessException extends Exception {
-	private static final long serialVersionUID = 1L;
-
-	public InvalidAccessException(String message) {
-		super(message);
-	}
-}
 
 public class Geometry implements Comparable<Geometry> {
 	private int id = -1;

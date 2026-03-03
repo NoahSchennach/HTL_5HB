@@ -1,6 +1,6 @@
 package refactoring.refactorme;
 
-class IdException extends Exception {
+public class IdException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
