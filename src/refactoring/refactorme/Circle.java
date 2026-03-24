@@ -18,6 +18,10 @@ public class Circle extends Geometry {
         return radius;
     }
 
+    /**
+     * makes sure that radius is above 0 otherwise it throws illegalArgumentException
+     * @param radius
+     */
     public void setRadius(double radius) {
         if (radius < 0) {
             throw new IllegalArgumentException("Radius must not be negative.");
@@ -25,6 +29,7 @@ public class Circle extends Geometry {
         this.radius = radius;
     }
 
+    
     @Override
     public double calculateArea() {
         return radius * radius * Math.PI;

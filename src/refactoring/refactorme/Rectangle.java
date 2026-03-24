@@ -16,11 +16,17 @@ public class Rectangle extends Geometry {
         this.height = height;
     }
 
+   /**
+    * calculates the with of an rectangle and returns it
+    */
     @Override
     public double calculateArea() {
         return width * height;
     }
 
+    /**
+     * calculates the Perimeter of a rectangle
+     */
     @Override
     public double getPerimeter() {
         return 2 * (width + height);
