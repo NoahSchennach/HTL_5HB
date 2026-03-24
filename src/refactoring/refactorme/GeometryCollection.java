@@ -7,38 +7,27 @@ public class GeometryCollection<T extends Geometry> {
 	private final List<T> container;
 
 	public GeometryCollection() {
-		container = new ArrayList<T>();
+		container = new ArrayList<>();
 	}
 
-	public void add(T t) {
-		container.add(t);
+	public void add(T geometry) {
+		container.add(geometry);
 	}
 
-	public void remove(T t) {
-		container.remove(t);
+	public void remove(T geometry) {
+		container.remove(geometry);
 	}
 
-	public boolean contains(T t) {
-		return container.contains(t);
-	}
-
-	public boolean containsGeometry(Geometry geom) {
-		return container.contains(geom);
+	public boolean contains(T geometry) {
+		return container.contains(geometry);
 	}
 
 	public T getById(final int id) throws InvalidAccessException {
-		T element = null;
-		for (T t : container) {
-			if (t.getId() == id) {
-				element = t;
-				break;
+		for (T geometry : container) {
+			if (geometry.getId() == id) {
+				return geometry;
 			}
 		}
-
-		if (element == null) {
-			throw new InvalidAccessException("No such element.");
-		}
-
-		return element;
+		throw new InvalidAccessException("No such element.");
 	}
 }

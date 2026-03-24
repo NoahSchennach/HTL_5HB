@@ -8,7 +8,7 @@ public class DrawIt {
 		Geometry filledGreyCircle = new Circle(3, 3, true, "grey");
 		Geometry unfilledRedCircle = new Circle(4, 3, false, "red");
 
-		GeometryCollection<Geometry> construction = new GeometryCollection<Geometry>();
+		GeometryCollection<Geometry> construction = new GeometryCollection<>();
 
 		construction.add(filledGreyRect);
 		construction.add(unfilledBlueRect);
@@ -22,10 +22,15 @@ public class DrawIt {
 		}
 
 		System.out.println(construction.contains(unfilledRedCircle));
+
 		try {
 			construction.remove(unfilledRedCircle);
-			System.out.println(construction.getById(4).calculateArea());
+
+			
 			System.out.println(construction.contains(unfilledRedCircle));
+
+			System.out.println(construction.getById(4).calculateArea());
+
 		} catch (InvalidAccessException e) {
 			System.out.println(e.getMessage());
 		}

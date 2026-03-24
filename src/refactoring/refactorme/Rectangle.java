@@ -2,29 +2,35 @@ package refactoring.refactorme;
 
 public class Rectangle extends Geometry {
 
-	private int id = -1;
-	private final double width;
-	private final double height;
+    private final double width;
+    private final double height;
 
-	protected Rectangle(int id, double width, double height, boolean filled, String color) throws IdException {
-		super(id, width, height, filled, color);
+    protected Rectangle(int id, double width, double height, boolean filled, String color) throws IdException {
+        super(id, filled, color);
 
-		if (width < 0 || height < 0) {
-			System.out.println("Value less than zero not allowed!");
-		}
-		this.id = id;
-		this.width = width;
-		this.height = height;
-	}
+        if (width < 0 || height < 0) {
+            throw new IllegalArgumentException("Width and height must not be negative.");
+        }
 
-	@Override
-	public double calculateArea() {
-		return width * height;
-	}
+        this.width = width;
+        this.height = height;
+    }
 
-	@Override
-	public double getPerimeter() {
-		return 2 * (width + height);
-	}
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
 
+    @Override
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
 }

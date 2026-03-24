@@ -1,68 +1,41 @@
 package refactoring.refactorme;
 
+public abstract class Geometry implements Comparable<Geometry> {
+    private int id;
+    private boolean filled;
+    private String color;
 
+    protected Geometry(int id, boolean filled, String color) throws IdException {
+        validateId(id);
+        this.id = id;
+        this.filled = filled;
+        this.color = color;
+    }
 
+    private void validateId(int id) throws IdException {
+        if (id < 0) {
+            throw new IdException("Id must not be negative!");
+        }
+    }
 
+    public abstract double calculateArea();
 
-public class Geometry implements Comparable<Geometry> {
-	private int id = -1;
-	private boolean filled = false;
-	private String color = "";
-	private double width = 0;
-	private double height = 0;
+    public abstract double getPerimeter();
 
-	public Geometry() {
+    @Override
+    public int compareTo(Geometry other) {
+        return Double.compare(this.calculateArea(), other.calculateArea());
+    }
 
-	}
+    public int getId() {
+        return id;
+    }
 
-	protected Geometry(int id, boolean filled, String color) throws IdException {
+    public boolean isFilled() {
+        return filled;
+    }
 
-		if (this.id == id) {
-			throw new IdException("Id must be unique!");
-		}
-		this.id = id;
-		this.filled = filled;
-		this.color = color;
-	}
-
-	protected Geometry(int id, double width, double height, boolean filled, String color) throws IdException {
-		if (this.id == id) {
-			throw new IdException("Id must be unique!");
-		}
-		this.id = id;
-		this.width = width;
-		this.height = height;
-		this.filled = filled;
-		this.color = color;
-	}
-
-	public double calculateArea() {
-		return width * height;
-	}
-
-	public double getPerimeter() {
-		return 2 * (width + height);
-	}
-
-	@Override
-	public int compareTo(Geometry c) {
-		if (this.calculateArea() > c.calculateArea())
-			return 1;
-		else if (this.calculateArea() < c.calculateArea())
-			return -1;
-		else
-			return 0;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public boolean isFilled() {
-		return filled;
-	}
+    public String getColor() {
+        return color;
+    }
 }
